@@ -1,1202 +1,802 @@
 <!DOCTYPE html>
-
 <html lang="uz">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Mega Sweet & Drink Empire | Cyber Blue</title>
-
     <style>
-
         :root {
-
             --cyber-blue: #00b4d8;
-
             --deep-blue: #0077b6;
-
             --neon-glow: #90e0ef;
-
             --bg-absolute: #03045e;
-
             --panel-bg: rgba(2, 6, 23, 0.96);
-
             --card-bg: #0b132b;
-
             --card-hover: #1c2541;
-
             --card-selected: #0077b6;
-
             --text-light: #f1f5f9;
-
             --text-dim: #94a3b8;
-
             --neon-gold: #caf0f8;
-
             --success: #4ade80;
-
             --error: #f87171;
-
         }
-
-
 
         html, body {
-
             margin: 0;
-
             padding: 0;
-
             width: 100%;
-
             height: 100%;
-
             background-color: var(--bg-absolute);
-
             color: var(--text-light);
-
             font-family: 'Segoe UI', system-ui, sans-serif;
-
             overflow: hidden;
-
         }
-
-
 
         .mega-app-container {
-
             display: flex;
-
             width: 100%;
-
             height: 100%;
-
             background: radial-gradient(circle at center, #070a52 0%, #010214 100%);
-
         }
-
-
-
-        /* ============================================================= */
 
         /* CHAP PANEL: KASSA TERMINALI VA SAVATCHA */
-
-        /* ============================================================= */
-
         .billing-terminal-side {
-
             width: 34%;
-
             min-width: 390px;
-
             background: var(--panel-bg);
-
             border-right: 2px solid var(--cyber-blue);
-
             padding: 25px;
-
             box-sizing: border-box;
-
             display: flex;
-
             flex-direction: column;
-
             box-shadow: 15px 0 45px rgba(0,0,0,0.7);
-
             z-index: 10;
-
             backdrop-filter: blur(25px);
-
         }
-
-
 
         .lounge-brand h1 {
-
             margin: 0;
-
             text-align: center;
-
             color: var(--cyber-blue);
-
             font-size: 24px;
-
             text-transform: uppercase;
-
             letter-spacing: 2px;
-
             text-shadow: 0 0 10px rgba(0, 180, 216, 0.3);
-
         }
-
-
 
         .live-clock-badge {
-
             margin: 6px auto;
-
             font-size: 14px;
-
             font-family: monospace;
-
             color: #fff;
-
             background: rgba(0,0,0,0.5);
-
             padding: 4px 14px;
-
             border-radius: 30px;
-
             display: table;
-
             border: 1px solid var(--cyber-blue);
-
         }
-
-
 
         .input-gatekeeper {
-
             margin-bottom: 12px;
-
         }
-
-
 
         .input-gatekeeper label {
-
             display: block;
-
             font-size: 11px;
-
             color: var(--text-dim);
-
             text-transform: uppercase;
-
             margin-bottom: 4px;
-
             letter-spacing: 1px;
-
         }
-
-
 
         .input-gatekeeper label span {
-
             color: var(--error);
-
             font-weight: bold;
-
         }
-
-
 
         .input-gatekeeper input {
-
             width: 100%;
-
             padding: 11px;
-
             background: #020617;
-
             border: 1px solid #1e293b;
-
             border-radius: 7px;
-
             color: #fff;
-
             font-size: 14px;
-
             outline: none;
-
             box-sizing: border-box;
-
         }
-
-
 
         .input-gatekeeper input.error-active {
-
             border-color: var(--error);
-
             background: #451a1a;
-
         }
-
-
 
         /* Professional Kassa Cheki */
-
         .pos-paper-receipt {
-
             flex: 1;
-
             background: #fff;
-
             color: #000;
-
             border-radius: 12px;
-
             padding: 18px;
-
             font-family: 'Courier New', Courier, monospace;
-
             display: flex;
-
             flex-direction: column;
-
             box-shadow: inset 0 0 25px rgba(0,0,0,0.2);
-
             overflow-y: auto;
-
             margin-bottom: 12px;
-
         }
-
-
 
         .receipt-header-node {
-
             text-align: center;
-
             border-bottom: 2px dashed #000;
-
             padding-bottom: 6px;
-
             margin-bottom: 10px;
-
             font-weight: bold;
-
         }
-
-
 
         .receipt-items-bucket {
-
             flex: 1;
-
             overflow-y: auto;
-
             margin-bottom: 10px;
-
         }
-
-
 
         .bucket-row {
-
             display: flex;
-
             justify-content: space-between;
-
             font-size: 12px;
-
             margin: 4px 0;
-
             border-bottom: 1px dotted #ccc;
-
             padding-bottom: 2px;
-
         }
-
-
 
         .receipt-data-row {
-
             display: flex;
-
             justify-content: space-between;
-
             margin: 4px 0;
-
             font-size: 13px;
-
         }
-
-
 
         .receipt-grand-total {
-
             font-weight: bold;
-
             font-size: 17px;
-
             border-top: 2px solid #000;
-
             padding-top: 8px;
-
             margin-top: auto;
-
         }
-
-
 
         .order-dispatch-btn {
-
             width: 100%;
-
             background: var(--deep-blue);
-
             color: #fff;
-
             border: none;
-
             padding: 15px;
-
             font-size: 15px;
-
             font-weight: bold;
-
             text-transform: uppercase;
-
             border-radius: 8px;
-
             cursor: pointer;
-
             letter-spacing: 1px;
-
             transition: 0.3s;
-
         }
-
-
 
         .order-dispatch-btn:hover {
-
             background: var(--cyber-blue);
-
             color: #000;
-
             box-shadow: 0 0 20px var(--cyber-blue);
-
         }
-
-
-
-        /* ============================================================= */
 
         /* O'NG TOMON: KATALOG VA FILTRLAR */
-
-        /* ============================================================= */
-
         .catalog-display-side {
-
             width: 66%;
-
             height: 100%;
-
             display: flex;
-
             flex-direction: column;
-
         }
-
-
 
         .filter-control-deck {
-
             padding: 20px 40px;
-
             background: rgba(2, 6, 23, 0.95);
-
             border-bottom: 1px solid #1e293b;
-
             display: flex;
-
             gap: 12px;
-
             align-items: center;
-
             overflow-x: auto;
-
         }
-
-
 
         .deck-search-box {
-
             flex: 1;
-
             min-width: 200px;
-
         }
-
-
 
         .deck-search-box input {
-
             width: 100%;
-
             padding: 11px 20px;
-
             background: #020617;
-
             border: 1px solid #1e293b;
-
             border-radius: 25px;
-
             color: #fff;
-
             outline: none;
-
         }
-
-
 
         .mini-filter-node {
-
             background: #020617;
-
             border: 1px solid #1e293b;
-
             color: var(--text-dim);
-
             padding: 8px 16px;
-
             border-radius: 5px;
-
             cursor: pointer;
-
             font-size: 12px;
-
             font-weight: 600;
-
             white-space: nowrap;
-
         }
-
-
 
         .mini-filter-node.active-node, .mini-filter-node:hover {
-
             border-color: var(--cyber-blue);
-
             color: #fff;
-
             background: var(--card-bg);
-
         }
-
-
 
         /* Skrol hududi */
-
         .vault-scroll-grid {
-
             flex: 1;
-
             overflow-y: auto;
-
             padding: 25px 40px;
-
         }
-
-
 
         .category-cluster {
-
             margin-bottom: 30px;
-
         }
-
-
 
         .cluster-title-bar {
-
             font-size: 17px;
-
             color: var(--cyber-blue);
-
             text-transform: uppercase;
-
             letter-spacing: 1px;
-
             border-bottom: 1px solid #1e293b;
-
             padding-bottom: 6px;
-
             margin-bottom: 12px;
-
         }
-
-
 
         .item-stack-vertical {
-
             display: flex;
-
             flex-direction: column;
-
             gap: 10px;
-
         }
-
-
 
         .premium-choco-card {
-
             background: var(--card-bg);
-
             border: 1px solid #1e293b;
-
             border-radius: 10px;
-
             padding: 14px 20px;
-
             display: flex;
-
             justify-content: space-between;
-
             align-items: center;
-
             cursor: pointer;
-
             transition: 0.2s;
-
         }
-
-
 
         .premium-choco-card:hover {
-
             background: var(--card-hover);
-
             border-color: var(--cyber-blue);
-
         }
-
-
 
         .premium-choco-card.multi-selected {
-
             background: var(--card-selected);
-
             border-color: var(--neon-glow);
-
             box-shadow: inset 0 0 10px rgba(0, 180, 216, 0.2);
-
         }
-
-
 
         .card-left-payload {
-
             display: flex;
-
             align-items: center;
-
             gap: 15px;
-
         }
-
-
 
         .card-graphic-icon {
-
             font-size: 22px;
-
             background: #020617;
-
             width: 45px;
-
             height: 45px;
-
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
             border-radius: 8px;
-
             border: 1px solid #1e293b;
-
         }
-
-
 
         .card-meta-text .item-header-name {
-
             font-size: 16px;
-
             font-weight: bold;
-
             color: #fff;
-
         }
-
-
 
         .card-meta-text .item-snippet-desc {
-
             font-size: 12px;
-
             color: var(--text-dim);
-
             margin-top: 2px;
-
         }
-
-
 
         .card-price-payload {
-
             color: var(--neon-glow);
-
             font-weight: bold;
-
             font-size: 15px;
-
         }
-
-
 
         .system-credits-footer {
-
             background: #010214;
-
             padding: 15px;
-
             text-align: center;
-
             font-size: 12px;
-
             color: var(--text-dim);
-
             border-top: 1px solid #0b132b;
-
         }
-
-
 
         .system-credits-footer a {
-
             color: var(--cyber-blue);
-
             text-decoration: none;
-
             font-weight: bold;
-
         }
-
-
 
         /* SMS MODAL */
-
         .secure-modal-overlay {
-
             display: none;
-
             position: fixed;
-
             top: 0; left: 0; width: 100%; height: 100%;
-
             background: rgba(0, 0, 0, 0.95);
-
             z-index: 2000;
-
             justify-content: center;
-
             align-items: center;
-
         }
-
-
 
         .sms-center-panel {
-
             background: #fff;
-
             color: #000;
-
             width: 350px;
-
             border-radius: 12px;
-
             padding: 25px;
-
             text-align: center;
-
         }
-
-
 
         .sms-center-panel input {
-
             width: 130px;
-
             padding: 10px;
-
             text-align: center;
-
             font-size: 22px;
-
             font-weight: bold;
-
             border: 2px solid var(--deep-blue);
-
             border-radius: 6px;
-
             margin: 15px 0;
-
             outline: none;
-
         }
-
-
 
         /* TOAST BILDIRISHNOMA */
-
         .toast-slide-notification {
-
             position: fixed;
-
             top: 25px;
-
             right: -450px;
-
             width: 340px;
-
             background: #0f2d3a;
-
             border-left: 6px solid var(--cyber-blue);
-
             border-radius: 8px;
-
             padding: 15px;
-
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-
             display: flex;
-
             align-items: center;
-
             gap: 15px;
-
             transition: right 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-
             z-index: 9999;
-
         }
-
-
 
         .toast-slide-notification.active-toast {
-
             right: 25px;
-
         }
-
     </style>
-
 </head>
-
 <body>
 
-
-
 <div class="mega-app-container">
-
-   
-
+    
     <div class="billing-terminal-side">
-
         <div class="lounge-brand">
-
             <h1>Sweet Empire</h1>
-
             <div class="live-clock-badge" id="terminal-clock">00:00:00</div>
-
         </div>
 
-
-
         <div class="input-gatekeeper">
-
             <label>Mijoz ismi:</label>
-
             <input type="text" id="client-name" value="Mijoz">
-
         </div>
-
         <div class="input-gatekeeper">
-
             <label>Telefon raqam: <span>* (Majburiy)</span></label>
-
             <input type="tel" id="client-phone" placeholder="Masalan: 952846471">
-
         </div>
-
-
 
         <div class="pos-paper-receipt">
-
             <div class="receipt-header-node">
-
                 <div>🧾 SWEET BILL RECEIPT</div>
-
                 <div style="font-size:9px; font-weight:normal; color:#555; margin-top:2px;">TIZIM: CYBER BLUE V5</div>
-
             </div>
-
             <div class="receipt-data-row"><span>Mijoz:</span> <span id="chk-name">Mijoz</span></div>
-
             <div class="receipt-data-row"><span>Raqam:</span> <span id="chk-phone" style="color:var(--error); font-weight:bold;">Kiritilmagan</span></div>
-
             <div style="border-bottom: 1px dashed #000; margin: 8px 0;"></div>
-
-           
-
+            
             <div class="receipt-items-bucket" id="receipt-basket-list">
-
                 <div style="color:#777; text-align:center; font-size:11px; margin-top:20px;">Shirinlik tanlanmadi</div>
-
             </div>
-
-           
-
+            
             <div class="receipt-grand-total" id="chk-grand-total">JAMI: 0 so'm</div>
-
         </div>
-
-
 
         <button class="order-dispatch-btn" onclick="verifyAndSendOrder()">Buyurtma berish</button>
-
     </div>
 
-
-
     <div class="catalog-display-side">
-
         <div class="filter-control-deck">
-
             <div class="deck-search-box">
+                <input type="text" id="catalog-searcher" placeholder="Shirinlik yoki kofe nomini yozib qidiring..." oninput="searchCatalogItems()">
+            </div>
+            <button class="mini-filter-node active-node" onclick="executeClusterFilter('cakes', this)">Tortlar (14)</button>
+            <button class="mini-filter-node" onclick="executeClusterFilter('cold-sweets', this)">Desertlar (13)</button>
+            <button class="mini-filter-node" onclick="executeClusterFilter('sweet-drinks', this)">Ichimliklar & Kofe (17)</button>
+        </div>
 
-                <input type="text" id="catalog-searcher" placeholder="Shirinlik nomini yozib qidiring..." oninput="searchCatalogItems()">
-
+        <div class="vault-scroll-grid">
+            
+            <div class="category-cluster" data-segment="cakes">
+                <div class="cluster-title-bar">Eksklyuziv Tortlar va Pishiriqlar</div>
+                <div class="item-stack-vertical">
+                    <div class="premium-choco-card" data-id="ck1" data-name="Medoviy Klassik" data-price="18000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🍰</div><div class="card-meta-text"><div class="item-header-name">Medoviy Klassik</div><div class="item-snippet-desc">Asalli yumshoq va mayin korj qatlamlari</div></div></div>
+                        <div class="card-price-payload">18,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="ck2" data-name="Chizkeyk Nyu-York" data-price="24000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🧀</div><div class="card-meta-text"><div class="item-header-name">Chizkeyk Nyu-York</div><div class="item-snippet-desc">Tvorogli qaymoqli pishloq va qumloq asos</div></div></div>
+                        <div class="card-price-payload">24,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="ck3" data-name="Snickers Luxury Cake" data-price="22000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🥜</div><div class="card-meta-text"><div class="item-header-name">Snickers Luxury Cake</div><div class="item-snippet-desc">Yong'oq, quyuq karamel va sutli shokolad</div></div></div>
+                        <div class="card-price-payload">22,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="ck4" data-name="Cinnabon Original" data-price="17000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🧁</div><div class="card-meta-text"><div class="item-header-name">Cinnabon Original</div><div class="item-snippet-desc">Issiq dolchinli va shirin oq krem quyilgan bulochka</div></div></div>
+                        <div class="card-price-payload">17,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="ck5" data-name="Red Velvet Slice" data-price="20000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🟥</div><div class="card-meta-text"><div class="item-header-name">Red Velvet Slice</div><div class="item-snippet-desc">Yorqin qizil rangli elita tort bo'lagi</div></div></div>
+                        <div class="card-price-payload">20,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="ck6" data-name="Brauni Supreme" data-price="16000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🥮</div><div class="card-meta-text"><div class="item-header-name">Brauni Supreme</div><div class="item-snippet-desc">Zich va to'yingan amerika shokoladli braunisi</div></div></div>
+                        <div class="card-price-payload">16,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="ck7" data-name="Shokoladli Fondan" data-price="26000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🍮</div><div class="card-meta-text"><div class="item-header-name">Shokoladli Fondan</div><div class="item-snippet-desc">Ichidan issiq suyuq shokolad oquvchi keks</div></div></div>
+                        <div class="card-price-payload">26,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="ck8" data-name="Fransuz Kruassani" data-price="13000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🥐</div><div class="card-meta-text"><div class="item-header-name">Fransuz Kruassani</div><div class="item-snippet-desc">Sariyog'li qatlama issiq kruassan (shokoladli)</div></div></div>
+                        <div class="card-price-payload">13,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="ck9" data-name="Kapkeyk Berry" data-price="11000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🧁</div><div class="card-meta-text"><div class="item-header-name">Kapkeyk Berry</div><div class="item-snippet-desc">Malinali krem va rezavor mevali bezak</div></div></div>
+                        <div class="card-price-payload">11,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="ck10" data-name="Eklers Premium" data-price="15000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🥖</div><div class="card-meta-text"><div class="item-header-name">Eklers Premium</div><div class="item-snippet-desc">Zavarnoy krem va shokoladli glazur qatlami (2 dona)</div></div></div>
+                        <div class="card-price-payload">15,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="ck11" data-name="Napoleon Uy Usuli" data-price="18000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🍰</div><div class="card-meta-text"><div class="item-header-name">Napoleon Uy Usuli</div><div class="item-snippet-desc">Haqiqiy sariyog'li va shirin kremli qatlama tort</div></div></div>
+                        <div class="card-price-payload">18,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="ck12" data-name="Bounty Premium Cake" data-price="21000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🥥</div><div class="card-meta-text"><div class="item-header-name">Bounty Premium Cake</div><div class="item-snippet-desc">Kokos qirindilari va quyuq sutli shokolad balansi</div></div></div>
+                        <div class="card-price-payload">21,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="ck13" data-name="Mevali Tart" data-price="16000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🥧</div><div class="card-meta-text"><div class="item-header-name">Mevali Tart</div><div class="item-snippet-desc">Qumloq xamir ichida vanilli krem va mevalar</div></div></div>
+                        <div class="card-price-payload">16,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="ck14" data-name="Meringa Ruleti" data-price="25000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🍥</div><div class="card-meta-text"><div class="item-header-name">Meringa Ruleti</div><div class="item-snippet-desc">Yengil va og'izda eriydigan beze hamda malina</div></div></div>
+                        <div class="card-price-payload">25,000 so'm</div>
+                    </div>
+                </div>
             </div>
 
-            <button class="mini-filter-node active-node" onclick="executeClusterFilter('cakes', this)">Tortlar (14)</button>
+            <div class="category-cluster" data-segment="cold-sweets" style="display: none;">
+                <div class="cluster-title-bar">Muzqaymoq va Nozik Desertlar</div>
+                <div class="item-stack-vertical">
+                    <div class="premium-choco-card" data-id="cs1" data-name="Plombir Sharshara" data-price="9000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🍦</div><div class="card-meta-text"><div class="item-header-name">Plombir Sharshara</div><div class="item-snippet-desc">Klassik qaymoqli vafli stakandagi muzqaymoq</div></div></div>
+                        <div class="card-price-payload">9,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="cs2" data-name="Tiramisu Elegant" data-price="25000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">☕</div><div class="card-meta-text"><div class="item-header-name">Tiramisu Elegant</div><div class="item-snippet-desc">Savoyardi pechenyelari va maskarpone kremi</div></div></div>
+                        <div class="card-price-payload">25,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="cs3" data-name="Waffle Qulupnayli" data-price="27000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🧇</div><div class="card-meta-text"><div class="item-header-name">Waffle Qulupnayli</div><div class="item-snippet-desc">Issiq vafli, yangi qulupnay va muzqaymoq sharigi</div></div></div>
+                        <div class="card-price-payload">27,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="cs4" data-name="Panna Cotta Berry" data-price="21000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🍮</div><div class="card-meta-text"><div class="item-header-name">Panna Cotta Berry</div><div class="item-snippet-desc">Qaymoqli jelly deserti va o'rmon mevalari sousi</div></div></div>
+                        <div class="card-price-payload">21,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="cs5" data-name="Makaron To'plami" data-price="24000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🥯</div><div class="card-meta-text"><div class="item-header-name">Makaron To'plami</div><div class="item-snippet-desc">Fransuzcha rangli bodom unidan pishiriq (3 dona)</div></div></div>
+                        <div class="card-price-payload">24,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="cs6" data-name="Donat Shokoladli" data-price="12000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🍩</div><div class="card-meta-text"><div class="item-header-name">Donat Shokoladli</div><div class="item-snippet-desc">Amerikancha yumshoq ponchik va rangli toshchalar</div></div></div>
+                        <div class="card-price-payload">12,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="cs7" data-name="Meva Assorti Sweet" data-price="30000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🍓</div><div class="card-meta-text"><div class="item-header-name">Meva Assorti Sweet</div><div class="item-snippet-desc">Mavsumiy yangi mevalar va shokoladli pasta</div></div></div>
+                        <div class="card-price-payload">30,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="cs8" data-name="Eksklyuziv Truffellar" data-price="23000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🔮</div><div class="card-meta-text"><div class="item-header-name">Eksklyuziv Truffellar</div><div class="item-snippet-desc">Kakao kukuniga belangan fransuz konfetlari</div></div></div>
+                        <div class="card-price-payload">23,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="cs9" data-name="Banan Split" data-price="26000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🍌</div><div class="card-meta-text"><div class="item-header-name">Banan Split</div><div class="item-snippet-desc">Banan orasiga 3 xil turdagi muzqaymoq va siroplar</div></div></div>
+                        <div class="card-price-payload">26,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="cs10" data-name="Shokoladli Muss" data-price="19000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🥛</div><div class="card-meta-text"><div class="item-header-name">Shokoladli Muss</div><div class="item-snippet-desc">Havoli yengil kremli shokoladli ko'pik</div></div></div>
+                        <div class="card-price-payload">19,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="cs11" data-name="Raffaello Deserti" data-price="22000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🍬</div><div class="card-meta-text"><div class="item-header-name">Raffaello Deserti</div><div class="item-snippet-desc">Kokosli qaymoq, bodom va nozik krispi bo'laklari</div></div></div>
+                        <div class="card-price-payload">22,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="cs12" data-name="Muzqaymoq Gelato" data-price="35000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🍨</div><div class="card-meta-text"><div class="item-header-name">Muzqaymoq Gelato</div><div class="item-snippet-desc">Italiya uslubidagi mevali va pistali premium muzqaymoq</div></div></div>
+                        <div class="card-price-payload">35,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="cs13" data-name="Crème Brûlée" data-price="24000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🍮</div><div class="card-meta-text"><div class="item-header-name">Crème Brûlée</div><div class="item-snippet-desc">Usti olovda qizitilgan qarsildoq karamel qobiqli vanil kremi</div></div></div>
+                        <div class="card-price-payload">24,000 so'm</div>
+                    </div>
+                </div>
+            </div>
 
-            <button class="mini-filter-node" onclick="executeClusterFilter('cold-sweets', this)">Desertlar (13)</button>
+            <div class="category-cluster" data-segment="sweet-drinks" style="display: none;">
+                <div class="cluster-title-bar">Mashhur Ichimliklar va Yangi Kofelar</div>
+                <div class="item-stack-vertical">
+                    <div class="premium-choco-card" data-id="cf1" data-name="Espresso" data-price="10000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">☕</div><div class="card-meta-text"><div class="item-header-name">Espresso</div><div class="item-snippet-desc">Zich, achchiq va tetiklashtiruvchi klassik kofe</div></div></div>
+                        <div class="card-price-payload">10,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="cf2" data-name="Kapuchino" data-price="14000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">☕</div><div class="card-meta-text"><div class="item-header-name">Kapuchino</div><div class="item-snippet-desc">Espresso va qalin, havoli sut ko'pigi uyg'unligi</div></div></div>
+                        <div class="card-price-payload">14,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="cf3" data-name="Latte Makiyato" data-price="16000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🥛</div><div class="card-meta-text"><div class="item-header-name">Latte Makiyato</div><div class="item-snippet-desc">Yumshoq sutli ta'm va ko'p miqdordagi kofe kremi</div></div></div>
+                        <div class="card-price-payload">16,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="cf4" data-name="Amerikano" data-price="12000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">☕</div><div class="card-meta-text"><div class="item-header-name">Amerikano</div><div class="item-snippet-desc">Issiq suv bilan yumshatilgan an'anaviy qora kofe</div></div></div>
+                        <div class="card-price-payload">12,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="sd6" data-name="Frappuchino Karamel" data-price="22000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">☕</div><div class="card-meta-text"><div class="item-header-name">Frappuchino Karamel</div><div class="item-snippet-desc">Muzli kofe, quyuq sut va karamel sirobi</div></div></div>
+                        <div class="card-price-payload">22,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="sd11" data-name="Issiq Shokolad" data-price="14000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">☕</div><div class="card-meta-text"><div class="item-header-name">Issiq Shokolad</div><div class="item-snippet-desc">Eritilgan quyuq va shirin issiq shokolad</div></div></div>
+                        <div class="card-price-payload">14,000 so'm</div>
+                    </div>
 
-            <button class="mini-filter-node" onclick="executeClusterFilter('sweet-drinks', this)">Ichimliklar (13)</button>
+                    <div class="premium-choco-card" data-id="sd1" data-name="Coca-Cola Classic" data-price="9000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🔴</div><div class="card-meta-text"><div class="item-header-name">Coca-Cola Classic</div><div class="item-snippet-desc">0.5L Muzdek va original gazlangan ichimlik</div></div></div>
+                        <div class="card-price-payload">9,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="sd2" data-name="Pepsi Cola" data-price="9000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🔵</div><div class="card-meta-text"><div class="item-header-name">Pepsi Cola</div><div class="item-snippet-desc">0.5L Tetiklashtiruvchi klassik shirin ta'm</div></div></div>
+                        <div class="card-price-payload">9,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="sd3" data-name="Fanta Orange" data-price="9000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🍊</div><div class="card-meta-text"><div class="item-header-name">Fanta Orange</div><div class="item-snippet-desc">Yorqin apelsinli shirin gazlangan suv</div></div></div>
+                        <div class="card-price-payload">9,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="sd4" data-name="Sprite Lime" data-price="9000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🍋</div><div class="card-meta-text"><div class="item-header-name">Sprite Lime</div><div class="item-snippet-desc">Limon va laym ta'miga boy shirin tetiklik</div></div></div>
+                        <div class="card-price-payload">9,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="sd5" data-name="Milkshake Oreo" data-price="19000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🥛</div><div class="card-meta-text"><div class="item-header-name">Milkshake Oreo</div><div class="item-snippet-desc">Sut, muzqaymoq va oreo kukunlari miksi</div></div></div>
+                        <div class="card-price-payload">19,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="sd7" data-name="Lipton Shaftoli" data-price="10000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🍃</div><div class="card-meta-text"><div class="item-header-name">Lipton Shaftoli</div><div class="item-snippet-desc">0.5L Shaftoli iforli shirin sovuq choy</div></div></div>
+                        <div class="card-price-payload">10,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="sd8" data-name="Red Bull Energy" data-price="22000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">⚡</div><div class="card-meta-text"><div class="item-header-name">Red Bull Energy</div><div class="item-snippet-desc">Premium quvvat beruvchi shirin ichimlik</div></div></div>
+                        <div class="card-price-payload">22,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="sd9" data-name="Moxito Qulupnayli" data-price="16000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🍹</div><div class="card-meta-text"><div class="item-header-name">Moxito Qulupnayli</div><div class="item-snippet-desc">Yalpiz, laym, muz va qulupnay shirin sirobi</div></div></div>
+                        <div class="card-price-payload">16,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="sd10" data-name="Sharbat Multimeva" data-price="12000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🧃</div><div class="card-meta-text"><div class="item-header-name">Sharbat Multimeva</div><div class="item-snippet-desc">Tabiiy mevalardan tayyorlangan sharbat</div></div></div>
+                        <div class="card-price-payload">12,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="sd12" data-name="Milkshake Qulupnay" data-price="18000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🍓</div><div class="card-meta-text"><div class="item-header-name">Milkshake Qulupnay</div><div class="item-snippet-desc">Malinali-qulupnayli qaymoqli shirin sutli kokteyl</div></div></div>
+                        <div class="card-price-payload">18,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="sd13" data-name="Limonad Ko'k Okean" data-price="15000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🌐</div><div class="card-meta-text"><div class="item-header-name">Limonad Ko'k Okean</div><div class="item-snippet-desc">Kyurasao sirobi, limon va gazlangan shirin kokteyl</div></div></div>
+                        <div class="card-price-payload">15,000 so'm</div>
+                    </div>
+                </div>
+            </div>
 
         </div>
 
-
-
-        <div class="vault-scroll-grid">
-
-           
-
-            <div class="category-cluster" data-segment="cakes">
-
-                <div class="cluster-title-bar">Eksklyuziv Tortlar va Pishiriqlar</div>
-
-                <div class="item-stack-vertical">
-
-                    <div class="premium-choco-card" data-id="ck1" data-name="Medoviy Klassik" data-price="18000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">🍰</div><div class="card-meta-text"><div class="item-header-name">Medoviy Klassik</div><div class="item-snippet-desc">Asalli yumshoq va mayin korj qatlamlari</div></div></div>
-
-                        <div class="card-price-payload">18,000 so'm</div>
-
-                    </div>
-
-                    <div class="premium-choco-card" data-id="ck2" data-name="Chizkeyk Nyu-York" data-price="24000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">🧀</div><div class="card-meta-text"><div class="item-header-name">Chizkeyk Nyu-York</div><div class="item-snippet-desc">Tvorogli qaymoqli pishloq va qumloq asos</div></div></div>
-
-                        <div class="card-price-payload">24,000 so'm</div>
-
-                    </div>
-
-                    <div class="premium-choco-card" data-id="ck3" data-name="Snickers Luxury Cake" data-price="22000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">🥜</div><div class="card-meta-text"><div class="item-header-name">Snickers Luxury Cake</div><div class="item-snippet-desc">Yong'oq, quyuq karamel va sutli shokolad</div></div></div>
-
-                        <div class="card-price-payload">22,000 so'm</div>
-
-                    </div>
-
-                    <div class="premium-choco-card" data-id="ck4" data-name="Cinnabon Original" data-price="17000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">🧁</div><div class="card-meta-text"><div class="item-header-name">Cinnabon Original</div><div class="item-snippet-desc">Issiq dolchinli va shirin oq krem quyilgan bulochka</div></div></div>
-
-                        <div class="card-price-payload">17,000 so'm</div>
-
-                    </div>
-
-                    <div class="premium-choco-card" data-id="ck5" data-name="Red Velvet Slice" data-price="20000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">🟥</div><div class="card-meta-text"><div class="item-header-name">Red Velvet Slice</div><div class="item-snippet-desc">Yorqin qizil rangli elita tort bo'lagi</div></div></div>
-
-                        <div class="card-price-payload">20,000 so'm</div>
-
-                    </div>
-
-                    <div class="premium-choco-card" data-id="ck6" data-name="Brauni Supreme" data-price="16000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">🥮</div><div class="card-meta-text"><div class="item-header-name">Brauni Supreme</div><div class="item-snippet-desc">Zich va to'yingan amerika shokoladli braunisi</div></div></div>
-
-                        <div class="card-price-payload">16,000 so'm</div>
-
-                    </div>
-
-                    <div class="premium-choco-card" data-id="ck7" data-name="Shokoladli Fondan" data-price="26000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">🍮</div><div class="card-meta-text"><div class="item-header-name">Shokoladli Fondan</div><div class="item-snippet-desc">Ichidan issiq suyuq shokolad oquvchi keks</div></div></div>
-
-                        <div class="card-price-payload">26,000 so'm</div>
-
-                    </div>
-
-                    <div class="premium-choco-card" data-id="ck8" data-name="Fransuz Kruassani" data-price="13000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">🥐</div><div class="card-meta-text"><div class="item-header-name">Fransuz Kruassani</div><div class="item-snippet-desc">Sariyog'li qatlama issiq kruassan (shokoladli)</div></div></div>
-
-                        <div class="card-price-payload">13,000 so'm</div>
-
-                    </div>
-
-                    <div class="premium-choco-card" data-id="ck9" data-name="Kapkeyk Berry" data-price="11000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">🧁</div><div class="card-meta-text"><div class="item-header-name">Kapkeyk Berry</div><div class="item-snippet-desc">Malinali krem va rezavor mevali bezak</div></div></div>
-
-                        <div class="card-price-payload">11,000 so'm</div>
-
-                    </div>
-
-                    <div class="premium-choco-card" data-id="ck10" data-name="Eklers Premium" data-price="15000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">🥖</div><div class="card-meta-text"><div class="item-header-name">Eklers Premium</div><div class="item-snippet-desc">Zavarnoy krem va shokoladli glazur qatlami (2 dona)</div></div></div>
-
-                        <div class="card-price-payload">15,000 so'm</div>
-
-                    </div>
-
-                    <div class="premium-choco-card" data-id="ck11" data-name="Napoleon Uy Usuli" data-price="18000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">🍰</div><div class="card-meta-text"><div class="item-header-name">Napoleon Uy Usuli</div><div class="item-snippet-desc">Haqiqiy sariyog'li va shirin kremli qatlama tort</div></div></div>
-
-                        <div class="card-price-payload">18,000 so'm</div>
-
-                    </div>
-
-                    <div class="premium-choco-card" data-id="ck12" data-name="Bounty Premium Cake" data-price="21000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">🥥</div><div class="card-meta-text"><div class="item-header-name">Bounty Premium Cake</div><div class="item-snippet-desc">Kokos qirindilari va quyuq sutli shokolad balansi</div></div></div>
-
-                        <div class="card-price-payload">21,000 so'm</div>
-
-                    </div>
-
-                    <div class="premium-choco-card" data-id="ck13" data-name="Mevali Tart" data-price="16000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">🥧</div><div class="card-meta-text"><div class="item-header-name">Mevali Tart</div><div class="item-snippet-desc">Qumloq xamir ichida vanilli krem va mevalar</div></div></div>
-
-                        <div class="card-price-payload">16,000 so'm</div>
-
-                    </div>
-
-                    <div class="premium-choco-card" data-id="ck14" data-name="Meringa Ruleti" data-price="25000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">🍥</div><div class="card-meta-text"><div class="item-header-name">Meringa Ruleti</div><div class="item-snippet-desc">Yengil va og'izda eriydigan beze hamda malina</div></div></div>
-
-                        <div class="card-price-payload">25,000 so'm</div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="category-cluster" data-segment="cold-sweets" style="display: none;">
-
-                <div class="cluster-title-bar">Muzqaymoq va Nozik Desertlar</div>
-
-                <div class="item-stack-vertical">
-
-                    <div class="premium-choco-card" data-id="cs1" data-name="Plombir Sharshara" data-price="9000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">🍦</div><div class="card-meta-text"><div class="item-header-name">Plombir Sharshara</div><div class="item-snippet-desc">Klassik qaymoqli vafli stakandagi muzqaymoq</div></div></div>
-
-                        <div class="card-price-payload">9,000 so'm</div>
-
-                    </div>
-
-                    <div class="premium-choco-card" data-id="cs2" data-name="Tiramisu Elegant" data-price="25000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">☕</div><div class="card-meta-text"><div class="item-header-name">Tiramisu Elegant</div><div class="item-snippet-desc">Savoyardi pechenyelari va maskarpone kremi</div></div></div>
-
-                        <div class="card-price-payload">25,000 so'm</div>
-
-                    </div>
-
-                    <div class="premium-choco-card" data-id="cs3" data-name="Waffle Qulupnayli" data-price="27000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon"> waffles  🧇</div><div class="card-meta-text"><div class="item-header-name">Waffle Qulupnayli</div><div class="item-snippet-desc">Issiq vafli, yangi qulupnay va muzqaymoq sharigi</div></div></div>
-
-                        <div class="card-price-payload">27,000 so'm</div>
-
-                    </div>
-
-                    <div class="premium-choco-card" data-id="cs4" data-name="Panna Cotta Berry" data-price="21000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">🍮</div><div class="card-meta-text"><div class="item-header-name">Panna Cotta Berry</div><div class="item-snippet-desc">Qaymoqli jelly deserti va o'rmon mevalari sousi</div></div></div>
-
-                        <div class="card-price-payload">21,000 so'm</div>
-
-                    </div>
-
-                    <div class="premium-choco-card" data-id="cs5" data-name="Makaron To'plami" data-price="24000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">🥯</div><div class="card-meta-text"><div class="item-header-name">Makaron To'plami</div><div class="item-snippet-desc">Fransuzcha rangli bodom unidan pishiriq (3 dona)</div></div></div>
-
-                        <div class="card-price-payload">24,000 so'm</div>
-
-                    </div>
-
-                    <div class="premium-choco-card" data-id="cs6" data-name="Donat Shokoladli" data-price="12000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">🍩</div><div class="card-meta-text"><div class="item-header-name">Donat Shokoladli</div><div class="item-snippet-desc">Amerikancha yumshoq ponchik va rangli toshchalar</div></div></div>
-
-                        <div class="card-price-payload">12,000 so'm</div>
-
-                    </div>
-
-                    <div class="premium-choco-card" data-id="cs7" data-name="Meva Assorti Sweet" data-price="30000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">🍓</div><div class="card-meta-text"><div class="item-header-name">Meva Assorti Sweet</div><div class="item-snippet-desc">Mavsumiy yangi mevalar va shokoladli pasta</div></div></div>
-
-                        <div class="card-price-payload">30,000 so'm</div>
-
-                    </div>
-
-                    <div class="premium-choco-card" data-id="cs8" data-name="Eksklyuziv Truffellar" data-price="23000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">🔮</div><div class="card-meta-text"><div class="item-header-name">Eksklyuziv Truffellar</div><div class="item-snippet-desc">Kakao kukuniga belangan fransuz konfetlari</div></div></div>
-
-                        <div class="card-price-payload">23,000 so'm</div>
-
-                    </div>
-
-                    <div class="premium-choco-card" data-id="cs9" data-name="Banan Split" data-price="26000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">🍌</div><div class="card-meta-text"><div class="item-header-name">Banan Split</div><div class="item-snippet-desc">Banan orasiga 3 xil turdagi muzqaymoq va siroplar</div></div></div>
-
-                        <div class="card-price-payload">26,000 so'm</div>
-
-                    </div>
-
-                    <div class="premium-choco-card" data-id="cs10" data-name="Shokoladli Muss" data-price="19000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">🥛</div><div class="card-meta-text"><div class="item-header-name">Shokoladli Muss</div><div class="item-snippet-desc">Havoli yengil kremli shokoladli ko'pik</div></div></div>
-
-                        <div class="card-price-payload">19,000 so'm</div>
-
-                    </div>
-
-                    <div class="premium-choco-card" data-id="cs11" data-name="Raffaello Deserti" data-price="22000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">🍬</div><div class="card-meta-text"><div class="item-header-name">Raffaello Deserti</div><div class="item-snippet-desc">Kokosli qaymoq, bodom va nozik krispi bo'laklari</div></div></div>
-
-                        <div class="card-price-payload">22,000 so'm</div>
-
-                    </div>
-
-                    <div class="premium-choco-card" data-id="cs12" data-name="Muzqaymoq Gelato" data-price="35000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">🍨</div><div class="card-meta-text"><div class="item-header-name">Muzqaymoq Gelato</div><div class="item-snippet-desc">Italiya uslubidagi mevali va pistali premium muzqaymoq</div></div></div>
-
-                        <div class="card-price-payload">35,000 so'm</div>
-
-                    </div>
-
-                    <div class="premium-choco-card" data-id="cs13" data-name="Crème Brûlée" data-price="24000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">🍮</div><div class="card-meta-text"><div class="item-header-name">Crème Brûlée</div><div class="item-snippet-desc">Usti olovda qizitilgan qarsildoq karamel qobiqli vanil kremi</div></div></div>
-
-                        <div class="card-price-payload">24,000 so'm</div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="category-cluster" data-segment="sweet-drinks" style="display: none;">
-
-                <div class="cluster-title-bar">Mashhur Shirin Ichimliklar</div>
-
-                <div class="item-stack-vertical">
-
-                    <div class="premium-choco-card" data-id="sd1" data-name="Coca-Cola Classic" data-price="9000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">🔴</div><div class="card-meta-text"><div class="item-header-name">Coca-Cola Classic</div><div class="item-snippet-desc">0.5L Muzdek va original gazlangan ichimlik</div></div></div>
-
-                        <div class="card-price-payload">9,000 so'm</div>
-
-                    </div>
-
-                    <div class="premium-choco-card" data-id="sd2" data-name="Pepsi Cola" data-price="9000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">🔵</div><div class="card-meta-text"><div class="item-header-name">Pepsi Cola</div><div class="item-snippet-desc">0.5L Tetiklashtiruvchi klassik shirin ta'm</div></div></div>
-
-                        <div class="card-price-payload">9,000 so'm</div>
-
-                    </div>
-
-                    <div class="premium-choco-card" data-id="sd3" data-name="Fanta Orange" data-price="9000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">🍊</div><div class="card-meta-text"><div class="item-header-name">Fanta Orange</div><div class="item-snippet-desc">Yorqin apelsinli shirin gazlangan suv</div></div></div>
-
-                        <div class="card-price-payload">9,000 so'm</div>
-
-                    </div>
-
-                    <div class="premium-choco-card" data-id="sd4" data-name="Sprite Lime" data-price="9000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">🍋</div><div class="card-meta-text"><div class="item-header-name">Sprite Lime</div><div class="item-snippet-desc">Limon va laym ta'miga boy shirin tetiklik</div></div></div>
-
-                        <div class="card-price-payload">9,000 so'm</div>
-
-                    </div>
-
-                    <div class="premium-choco-card" data-id="sd5" data-name="Milkshake Oreo" data-price="19000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">🥛</div><div class="card-meta-text"><div class="item-header-name">Milkshake Oreo</div><div class="item-snippet-desc">Sut, muzqaymoq va oreo kukunlari miksi</div></div></div>
-
-                        <div class="card-price-payload">19,000 so'm</div>
-
-                    </div>
-
-                    <div class="premium-choco-card" data-id="sd6" data-name="Frappuchino Karamel" data-price="22000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">☕</div><div class="card-meta-text"><div class="item-header-name">Frappuchino Karamel</div><div class="item-snippet-desc">Muzli kofe, quyuq sut va karamel sirobi</div></div></div>
-
-                        <div class="card-price-payload">22,000 so'm</div>
-
-                    </div>
-
-                    <div class="premium-choco-card" data-id="sd7" data-name="Lipton Shaftoli" data-price="10000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">🍃</div><div class="card-meta-text"><div class="item-header-name">Lipton Shaftoli</div><div class="item-snippet-desc">0.5L Shaftoli iforli shirin sovuq choy</div></div></div>
-
-                        <div class="card-price-payload">10,000 so'm</div>
-
-                    </div>
-
-                    <div class="premium-choco-card" data-id="sd8" data-name="Red Bull Energy" data-price="22000" onclick="toggleMultiSelect(this)">
-
-                        <div class="card-left-payload"><div class="card-graphic-icon">⚡</div><div class="card-meta-text"><div class="item-header-name">Red Bull Energy</div 
-
+        <div class="system-credits-footer">
+            <span>Buyurtma telefoni: <a href="tel:+998952846471">+998 95 284 64 71</a></span> | Ishlab chiquvchi: <b>asl.fx</b> &copy; 2026
+        </div>
+    </div>
+</div>
+
+<div class="secure-modal-overlay" id="verification-modal">
+    <div class="sms-center-panel">
+        <h3 style="margin:0; color:var(--deep-blue);">🔐 XAVFSIZLIKNI TASDIQLASH</h3>
+        <p style="font-size:13px; margin: 10px 0; color:#555;">Iltimos, ekrandagi kodni pastga kiriting.</p>
+        <div style="font-size: 16px; font-weight: bold; color:#0077b6;">SMS KOD: <span id="generated-sms-field">0000</span></div>
+        <input type="text" id="sms-user-input" placeholder="XXXX" maxlength="4">
+        <button class="order-dispatch-btn" onclick="submitSmsCodeVerification()">Kodni Tasdiqlash</button>
+    </div>
+</div>
+
+<div class="toast-slide-notification" id="toast-success-banner">
+    <div style="font-size: 26px; color: var(--cyber-blue);">✅</div>
+    <div>
+        <h4 style="margin:0; color:#fff; font-size:15px;">Shirin buyurtma qabul qilindi!</h4>
+        <p style="margin:3px 0 0 0; color:#94a3b8; font-size:12px;">Xaridingiz tez orada tayyor bo'ladi.</p>
+    </div>
+</div>
+
+<script>
+    let selectedItemsBucket = {};
+
+    function toggleMultiSelect(cardElement) {
+        const itemId = cardElement.getAttribute('data-id');
+        const itemName = cardElement.getAttribute('data-name');
+        const itemPrice = parseInt(cardElement.getAttribute('data-price'));
+
+        if (cardElement.classList.contains('multi-selected')) {
+            cardElement.classList.remove('multi-selected');
+            delete selectedItemsBucket[itemId];
+        } else {
+            cardElement.classList.add('multi-selected');
+            selectedItemsBucket[itemId] = { name: itemName, price: itemPrice };
+        }
+
+        renderLiveBasketAndTotal();
+    }
+
+    function renderLiveBasketAndTotal() {
+        const name = document.getElementById('client-name').value || "Mijoz";
+        const phone = document.getElementById('client-phone').value.trim();
+        
+        document.getElementById('chk-name').textContent = name;
+        
+        const phoneReceipt = document.getElementById('chk-phone');
+        if (phone.length > 0) {
+            phoneReceipt.textContent = phone;
+            phoneReceipt.style.color = "#000";
+            document.getElementById('client-phone').classList.remove('error-active');
+        } else {
+            phoneReceipt.textContent = "Kiritilmagan";
+            phoneReceipt.style.color = "var(--error)";
+        }
+
+        const basketListContainer = document.getElementById('receipt-basket-list');
+        basketListContainer.innerHTML = "";
+
+        let grandTotal = 0;
+        let itemKeys = Object.keys(selectedItemsBucket);
+
+        if (itemKeys.length === 0) {
+            basketListContainer.innerHTML = `<div style="color:#777; text-align:center; font-size:11px; margin-top:20px;">Mahsulot tanlanmadi</div>`;
+        } else {
+            itemKeys.forEach(key => {
+                const item = selectedItemsBucket[key];
+                grandTotal += item.price;
+
+                const row = document.createElement('div');
+                row.className = 'bucket-row';
+                row.innerHTML = `<span>• ${item.name}</span> <span>${item.price.toLocaleString()} so'm</span>`;
+                basketListContainer.appendChild(row);
+            });
+        }
+
+        document.getElementById('chk-grand-total').textContent = "JAMI: " + grandTotal.toLocaleString() + " so'm";
+    }
+
+    document.getElementById('client-name').addEventListener('input', renderLiveBasketAndTotal);
+    document.getElementById('client-phone').addEventListener('input', renderLiveBasketAndTotal);
+
+    let systemSmsCode = 0;
+    function verifyAndSendOrder() {
+        const phoneValue = document.getElementById('client-phone').value.trim();
+        const itemKeys = Object.keys(selectedItemsBucket);
+
+        if (itemKeys.length === 0) {
+            alert("❌ Kamida bitta mahsulot tanlashingiz kerak!");
+            return;
+        }
+
+        if (phoneValue === "" || phoneValue.length < 5) {
+            document.getElementById('client-phone').classList.add('error-active');
+            alert("❌ Buyurtma berish uchun telefon raqamingiz shart!");
+            document.getElementById('client-phone').focus();
+            return;
+        }
+
+        systemSmsCode = Math.floor(1000 + Math.random() * 9000);
+        document.getElementById('generated-sms-field').textContent = systemSmsCode;
+        document.getElementById('sms-user-input').value = "";
+        document.getElementById('verification-modal').style.display = 'flex';
+    }
+
+    function submitSmsCodeVerification() {
+        const userInput = document.getElementById('sms-user-input').value.trim();
+
+        if (userInput == systemSmsCode) {
+            document.getElementById('verification-modal').style.display = 'none';
+            
+            const toast = document.getElementById('toast-success-banner');
+            toast.classList.add('active-toast');
+            
+            setTimeout(() => {
+                toast.classList.remove('active-toast');
+            }, 4000);
+
+            selectedItemsBucket = {};
+            document.querySelectorAll('.premium-choco-card').forEach(card => card.classList.remove('multi-selected'));
+            renderLiveBasketAndTotal();
+
+        } else {
+            alert("❌ Tasdiqlash kodi xato! Qayta urinib ko'ring.");
+        }
+    }
+
+    function executeClusterFilter(segment, btnElement) {
+        document.querySelectorAll('.mini-filter-node').forEach(btn => btn.classList.remove('active-node'));
+        btnElement.classList.add('active-node');
+
+        document.querySelectorAll('.category-cluster').forEach(cluster => {
+            if (cluster.getAttribute('data-segment') === segment) {
+                cluster.style.display = 'block';
+            } else {
+                cluster.style.display = 'none';
+            }
+        });
+    }
+
+    function searchCatalogItems() {
+        const query = document.getElementById('catalog-searcher').value.toLowerCase();
+        document.querySelectorAll('.premium-choco-card').forEach(card => {
+            const name = card.getAttribute('data-name').toLowerCase();
+            card.style.display = name.includes(query) ? 'flex' : 'none';
+        });
+    }
+
+    setInterval(() => {
+        const d = new Date();
+        let h = d.getHours(), m = d.getMinutes(), s = d.getSeconds();
+        h = h < 10 ? '0' + h : h; m = m < 10 ? '0' + m : m; s = s < 10 ? '0' + s : s;
+        document.getElementById('terminal-clock').textContent = h + ':' + m + ':' + s;
+    }, 1000);
+</script>
+
+</body>
+</html>
