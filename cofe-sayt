@@ -61,7 +61,12 @@
             font-size: 24px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(0, 180, 216, 0.3);
+            animation: cyberPulse 3s infinite alternate;
+        }
+
+        @keyframes cyberPulse {
+            0% { text-shadow: 0 0 10px rgba(0, 180, 216, 0.4); }
+            100% { text-shadow: 0 0 25px rgba(144, 224, 239, 0.9), 0 0 5px #fff; }
         }
 
         .live-clock-badge {
@@ -74,10 +79,11 @@
             border-radius: 30px;
             display: table;
             border: 1px solid var(--cyber-blue);
+            box-shadow: 0 0 8px rgba(0, 180, 216, 0.3);
         }
 
         .input-gatekeeper {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .input-gatekeeper label {
@@ -96,19 +102,32 @@
 
         .input-gatekeeper input {
             width: 100%;
-            padding: 11px;
+            padding: 10px;
             background: #020617;
             border: 1px solid #1e293b;
             border-radius: 7px;
             color: #fff;
-            font-size: 14px;
+            font-size: 13.5px;
             outline: none;
             box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        .input-gatekeeper input:focus {
+            border-color: var(--cyber-blue);
+            box-shadow: 0 0 12px rgba(0, 180, 216, 0.5);
         }
 
         .input-gatekeeper input.error-active {
-            border-color: var(--error);
-            background: #451a1a;
+            border-color: var(--error) !important;
+            background: #451a1a !important;
+            animation: shake 0.4s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
         }
 
         /* Professional Kassa Cheki */
@@ -117,13 +136,18 @@
             background: #fff;
             color: #000;
             border-radius: 12px;
-            padding: 18px;
+            padding: 16px;
             font-family: 'Courier New', Courier, monospace;
             display: flex;
             flex-direction: column;
-            box-shadow: inset 0 0 25px rgba(0,0,0,0.2);
+            box-shadow: inset 0 0 25px rgba(0,0,0,0.2), 0 8px 20px rgba(0,0,0,0.4);
             overflow-y: auto;
             margin-bottom: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .pos-paper-receipt:hover {
+            transform: scale(1.01);
         }
 
         .receipt-header-node {
@@ -144,16 +168,22 @@
             display: flex;
             justify-content: space-between;
             font-size: 12px;
-            margin: 4px 0;
+            margin: 5px 0;
             border-bottom: 1px dotted #ccc;
-            padding-bottom: 2px;
+            padding-bottom: 3px;
+            animation: fadeInRow 0.3s ease-in-out;
+        }
+
+        @keyframes fadeInRow {
+            from { opacity: 0; transform: translateY(-4px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .receipt-data-row {
             display: flex;
             justify-content: space-between;
-            margin: 4px 0;
-            font-size: 13px;
+            margin: 3px 0;
+            font-size: 12.5px;
         }
 
         .receipt-grand-total {
@@ -176,13 +206,19 @@
             border-radius: 8px;
             cursor: pointer;
             letter-spacing: 1px;
-            transition: 0.3s;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 15px rgba(0, 119, 182, 0.4);
         }
 
         .order-dispatch-btn:hover {
             background: var(--cyber-blue);
             color: #000;
-            box-shadow: 0 0 20px var(--cyber-blue);
+            box-shadow: 0 0 25px var(--cyber-blue);
+            transform: translateY(-2px);
+        }
+
+        .order-dispatch-btn:active {
+            transform: translateY(1px);
         }
 
         /* O'NG TOMON: KATALOG VA FILTRLAR */
@@ -216,6 +252,12 @@
             border-radius: 25px;
             color: #fff;
             outline: none;
+            transition: 0.3s;
+        }
+
+        .deck-search-box input:focus {
+            border-color: var(--cyber-blue);
+            box-shadow: 0 0 15px rgba(0, 180, 216, 0.3);
         }
 
         .mini-filter-node {
@@ -228,12 +270,14 @@
             font-size: 12px;
             font-weight: 600;
             white-space: nowrap;
+            transition: all 0.3s ease;
         }
 
         .mini-filter-node.active-node, .mini-filter-node:hover {
             border-color: var(--cyber-blue);
             color: #fff;
             background: var(--card-bg);
+            box-shadow: 0 0 10px rgba(0, 180, 216, 0.3);
         }
 
         /* Skrol hududi */
@@ -245,6 +289,12 @@
 
         .category-cluster {
             margin-bottom: 30px;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .cluster-title-bar {
@@ -272,18 +322,21 @@
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
-            transition: 0.2s;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .premium-choco-card:hover {
             background: var(--card-hover);
             border-color: var(--cyber-blue);
+            transform: translateX(6px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
         }
 
         .premium-choco-card.multi-selected {
             background: var(--card-selected);
             border-color: var(--neon-glow);
-            box-shadow: inset 0 0 10px rgba(0, 180, 216, 0.2);
+            box-shadow: 0 0 18px rgba(0, 180, 216, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.2);
+            transform: scale(1.01);
         }
 
         .card-left-payload {
@@ -302,6 +355,11 @@
             justify-content: center;
             border-radius: 8px;
             border: 1px solid #1e293b;
+            transition: transform 0.3s ease;
+        }
+
+        .premium-choco-card:hover .card-graphic-icon {
+            transform: rotate(10deg) scale(1.1);
         }
 
         .card-meta-text .item-header-name {
@@ -322,30 +380,17 @@
             font-size: 15px;
         }
 
-        .system-credits-footer {
-            background: #010214;
-            padding: 15px;
-            text-align: center;
-            font-size: 12px;
-            color: var(--text-dim);
-            border-top: 1px solid #0b132b;
-        }
-
-        .system-credits-footer a {
-            color: var(--cyber-blue);
-            text-decoration: none;
-            font-weight: bold;
-        }
-
         /* SMS MODAL */
         .secure-modal-overlay {
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.95);
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
             z-index: 2000;
             justify-content: center;
             align-items: center;
+            animation: fadeIn 0.3s ease;
         }
 
         .sms-center-panel {
@@ -355,10 +400,17 @@
             border-radius: 12px;
             padding: 25px;
             text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            animation: popUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popUp {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
 
         .sms-center-panel input {
-            width: 130px;
+            width: 140px;
             padding: 10px;
             text-align: center;
             font-size: 22px;
@@ -367,6 +419,7 @@
             border-radius: 6px;
             margin: 15px 0;
             outline: none;
+            letter-spacing: 4px;
         }
 
         /* TOAST BILDIRISHNOMA */
@@ -403,12 +456,20 @@
         </div>
 
         <div class="input-gatekeeper">
-            <label>Mijoz ismi:</label>
-            <input type="text" id="client-name" value="Mijoz">
+            <label>Mijoz ismi: <span>*</span></label>
+            <input type="text" id="client-name" placeholder="Ismingizni kiriting...">
         </div>
         <div class="input-gatekeeper">
-            <label>Telefon raqam: <span>* (Majburiy)</span></label>
+            <label>Mijoz familiyasi: <span>*</span></label>
+            <input type="text" id="client-surname" placeholder="Familiyangizni kiriting...">
+        </div>
+        <div class="input-gatekeeper">
+            <label>Telefon raqam: <span>*</span></label>
             <input type="tel" id="client-phone" placeholder="Masalan: 952846471">
+        </div>
+        <div class="input-gatekeeper">
+            <label>Yetkazib berish manzili: <span>*</span></label>
+            <input type="text" id="client-address" value="Yangibozor tumani" placeholder="Manzilni kiriting...">
         </div>
 
         <div class="pos-paper-receipt">
@@ -416,8 +477,9 @@
                 <div>🧾 SWEET BILL RECEIPT</div>
                 <div style="font-size:9px; font-weight:normal; color:#555; margin-top:2px;">TIZIM: CYBER BLUE V5</div>
             </div>
-            <div class="receipt-data-row"><span>Mijoz:</span> <span id="chk-name">Mijoz</span></div>
+            <div class="receipt-data-row"><span>Mijoz:</span> <span id="chk-fullname" style="color:var(--error); font-weight:bold;">Kiritilmagan</span></div>
             <div class="receipt-data-row"><span>Raqam:</span> <span id="chk-phone" style="color:var(--error); font-weight:bold;">Kiritilmagan</span></div>
+            <div class="receipt-data-row"><span>Manzil:</span> <span id="chk-address" style="color:var(--deep-blue); font-weight:bold;">Yangibozor tumani</span></div>
             <div style="border-bottom: 1px dashed #000; margin: 8px 0;"></div>
             
             <div class="receipt-items-bucket" id="receipt-basket-list">
@@ -437,7 +499,7 @@
             </div>
             <button class="mini-filter-node active-node" onclick="executeClusterFilter('cakes', this)">Tortlar (14)</button>
             <button class="mini-filter-node" onclick="executeClusterFilter('cold-sweets', this)">Desertlar (13)</button>
-            <button class="mini-filter-node" onclick="executeClusterFilter('sweet-drinks', this)">Ichimliklar & Kofe (17)</button>
+            <button class="mini-filter-node" onclick="executeClusterFilter('sweet-drinks', this)">Ichimliklar & Kofe (22)</button>
         </div>
 
         <div class="vault-scroll-grid">
@@ -563,33 +625,67 @@
             </div>
 
             <div class="category-cluster" data-segment="sweet-drinks" style="display: none;">
-                <div class="cluster-title-bar">Mashhur Ichimliklar va Yangi Kofelar</div>
+                <div class="cluster-title-bar">Kofe turlari va Mashhur Ichimliklar</div>
                 <div class="item-stack-vertical">
+                    <!-- Kofe Turlari -->
                     <div class="premium-choco-card" data-id="cf1" data-name="Espresso" data-price="10000" onclick="toggleMultiSelect(this)">
-                        <div class="card-left-payload"><div class="card-graphic-icon">☕</div><div class="card-meta-text"><div class="item-header-name">Espresso</div><div class="item-snippet-desc">Zich, achchiq va tetiklashtiruvchi klassik kofe</div></div></div>
+                        <div class="card-left-payload"><div class="card-graphic-icon">☕</div><div class="card-meta-text"><div class="item-header-name">Espresso</div><div class="item-snippet-desc">Zich, achchiq va tetiklashtiruvchi klassik kofe (30ml)</div></div></div>
                         <div class="card-price-payload">10,000 so'm</div>
                     </div>
-                    <div class="premium-choco-card" data-id="cf2" data-name="Kapuchino" data-price="14000" onclick="toggleMultiSelect(this)">
-                        <div class="card-left-payload"><div class="card-graphic-icon">☕</div><div class="card-meta-text"><div class="item-header-name">Kapuchino</div><div class="item-snippet-desc">Espresso va qalin, havoli sut ko'pigi uyg'unligi</div></div></div>
-                        <div class="card-price-payload">14,000 so'm</div>
+                    <div class="premium-choco-card" data-id="cf2" data-name="Doppel Espresso" data-price="15000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">☕</div><div class="card-meta-text"><div class="item-header-name">Doppel Espresso</div><div class="item-snippet-desc">Ikki karra kuchli va quyuq espresso porsiyasi</div></div></div>
+                        <div class="card-price-payload">15,000 so'm</div>
                     </div>
-                    <div class="premium-choco-card" data-id="cf3" data-name="Latte Makiyato" data-price="16000" onclick="toggleMultiSelect(this)">
-                        <div class="card-left-payload"><div class="card-graphic-icon">🥛</div><div class="card-meta-text"><div class="item-header-name">Latte Makiyato</div><div class="item-snippet-desc">Yumshoq sutli ta'm va ko'p miqdordagi kofe kremi</div></div></div>
-                        <div class="card-price-payload">16,000 so'm</div>
-                    </div>
-                    <div class="premium-choco-card" data-id="cf4" data-name="Amerikano" data-price="12000" onclick="toggleMultiSelect(this)">
+                    <div class="premium-choco-card" data-id="cf3" data-name="Amerikano" data-price="12000" onclick="toggleMultiSelect(this)">
                         <div class="card-left-payload"><div class="card-graphic-icon">☕</div><div class="card-meta-text"><div class="item-header-name">Amerikano</div><div class="item-snippet-desc">Issiq suv bilan yumshatilgan an'anaviy qora kofe</div></div></div>
                         <div class="card-price-payload">12,000 so'm</div>
                     </div>
-                    <div class="premium-choco-card" data-id="sd6" data-name="Frappuchino Karamel" data-price="22000" onclick="toggleMultiSelect(this)">
-                        <div class="card-left-payload"><div class="card-graphic-icon">☕</div><div class="card-meta-text"><div class="item-header-name">Frappuchino Karamel</div><div class="item-snippet-desc">Muzli kofe, quyuq sut va karamel sirobi</div></div></div>
+                    <div class="premium-choco-card" data-id="cf4" data-name="Kapuchino" data-price="15000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">☕</div><div class="card-meta-text"><div class="item-header-name">Kapuchino</div><div class="item-snippet-desc">Espresso va qalin, havoli sut ko'pigi uyg'unligi</div></div></div>
+                        <div class="card-price-payload">15,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="cf5" data-name="Latte Makiyato" data-price="17000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🥛</div><div class="card-meta-text"><div class="item-header-name">Latte Makiyato</div><div class="item-snippet-desc">Yumshoq sutli qatlamlar va espresso kremi</div></div></div>
+                        <div class="card-price-payload">17,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="cf6" data-name="Flat White" data-price="18000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">☕</div><div class="card-meta-text"><div class="item-header-name">Flat White</div><div class="item-snippet-desc">Ikki porsiya espresso va oz miqdordagi qaymoqli sut</div></div></div>
+                        <div class="card-price-payload">18,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="cf7" data-name="Raf Kofe" data-price="20000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🧁</div><div class="card-meta-text"><div class="item-header-name">Raf Kofe</div><div class="item-snippet-desc">Espresso, qaymoq va vanil shakari birga ko'pirtirilgan</div></div></div>
+                        <div class="card-price-payload">20,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="cf8" data-name="Mocha (Mokachino)" data-price="21000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🍫</div><div class="card-meta-text"><div class="item-header-name">Mocha (Mokachino)</div><div class="item-snippet-desc">Shokolad sirobi, espresso va sutli ko'pik aralashmasi</div></div></div>
+                        <div class="card-price-payload">21,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="cf9" data-name="Glase (Kofe muzqaymoq bilan)" data-price="23000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🍨</div><div class="card-meta-text"><div class="item-header-name">Glase</div><div class="item-snippet-desc">Sovuq espresso va bir sharik vanilli plombir muzqaymoq</div></div></div>
+                        <div class="card-price-payload">23,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="cf10" data-name="Iced Latte" data-price="19000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🧊</div><div class="card-meta-text"><div class="item-header-name">Iced Latte</div><div class="item-snippet-desc">Muz bo'laklari, sovuq sut va espresso uyg'unligi</div></div></div>
+                        <div class="card-price-payload">19,000 so'm</div>
+                    </div>
+                    <div class="premium-choco-card" data-id="cf11" data-name="Frappuchino Karamel" data-price="22000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🥤</div><div class="card-meta-text"><div class="item-header-name">Frappuchino Karamel</div><div class="item-snippet-desc">Muzli kofe, sut va karamel sirobi bilan blenderdagi ko'pik</div></div></div>
                         <div class="card-price-payload">22,000 so'm</div>
                     </div>
-                    <div class="premium-choco-card" data-id="sd11" data-name="Issiq Shokolad" data-price="14000" onclick="toggleMultiSelect(this)">
-                        <div class="card-left-payload"><div class="card-graphic-icon">☕</div><div class="card-meta-text"><div class="item-header-name">Issiq Shokolad</div><div class="item-snippet-desc">Eritilgan quyuq va shirin issiq shokolad</div></div></div>
+                    <div class="premium-choco-card" data-id="cf12" data-name="Turkcha Kofe (Jezvada)" data-price="14000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🏺</div><div class="card-meta-text"><div class="item-header-name">Turkcha Kofe</div><div class="item-snippet-desc">An'anaviy jezvada qum ustida qaynona pishirilgan mayin kofe</div></div></div>
                         <div class="card-price-payload">14,000 so'm</div>
                     </div>
+                    <div class="premium-choco-card" data-id="cf13" data-name="Irish Coffee" data-price="25000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">🥃</div><div class="card-meta-text"><div class="item-header-name">Irish Coffee</div><div class="item-snippet-desc">Maxsus irland siropi, kofe va qalin qaymoq qatlami</div></div></div>
+                        <div class="card-price-payload">25,000 so'm</div>
+                    </div>
 
+                    <!-- Boshqa ichimliklar -->
+                    <div class="premium-choco-card" data-id="sd11" data-name="Issiq Shokolad" data-price="16000" onclick="toggleMultiSelect(this)">
+                        <div class="card-left-payload"><div class="card-graphic-icon">☕</div><div class="card-meta-text"><div class="item-header-name">Issiq Shokolad</div><div class="item-snippet-desc">Eritilgan quyuq va shirin issiq shokolad</div></div></div>
+                        <div class="card-price-payload">16,000 so'm</div>
+                    </div>
                     <div class="premium-choco-card" data-id="sd1" data-name="Coca-Cola Classic" data-price="9000" onclick="toggleMultiSelect(this)">
                         <div class="card-left-payload"><div class="card-graphic-icon">🔴</div><div class="card-meta-text"><div class="item-header-name">Coca-Cola Classic</div><div class="item-snippet-desc">0.5L Muzdek va original gazlangan ichimlik</div></div></div>
                         <div class="card-price-payload">9,000 so'm</div>
@@ -598,183 +694,143 @@
                         <div class="card-left-payload"><div class="card-graphic-icon">🔵</div><div class="card-meta-text"><div class="item-header-name">Pepsi Cola</div><div class="item-snippet-desc">0.5L Tetiklashtiruvchi klassik shirin ta'm</div></div></div>
                         <div class="card-price-payload">9,000 so'm</div>
                     </div>
-                    <div class="premium-choco-card" data-id="sd3" data-name="Fanta Orange" data-price="9000" onclick="toggleMultiSelect(this)">
-                        <div class="card-left-payload"><div class="card-graphic-icon">🍊</div><div class="card-meta-text"><div class="item-header-name">Fanta Orange</div><div class="item-snippet-desc">Yorqin apelsinli shirin gazlangan suv</div></div></div>
-                        <div class="card-price-payload">9,000 so'm</div>
-                    </div>
-                    <div class="premium-choco-card" data-id="sd4" data-name="Sprite Lime" data-price="9000" onclick="toggleMultiSelect(this)">
-                        <div class="card-left-payload"><div class="card-graphic-icon">🍋</div><div class="card-meta-text"><div class="item-header-name">Sprite Lime</div><div class="item-snippet-desc">Limon va laym ta'miga boy shirin tetiklik</div></div></div>
-                        <div class="card-price-payload">9,000 so'm</div>
-                    </div>
-                    <div class="premium-choco-card" data-id="sd5" data-name="Milkshake Oreo" data-price="19000" onclick="toggleMultiSelect(this)">
-                        <div class="card-left-payload"><div class="card-graphic-icon">🥛</div><div class="card-meta-text"><div class="item-header-name">Milkshake Oreo</div><div class="item-snippet-desc">Sut, muzqaymoq va oreo kukunlari miksi</div></div></div>
-                        <div class="card-price-payload">19,000 so'm</div>
-                    </div>
-                    <div class="premium-choco-card" data-id="sd7" data-name="Lipton Shaftoli" data-price="10000" onclick="toggleMultiSelect(this)">
-                        <div class="card-left-payload"><div class="card-graphic-icon">🍃</div><div class="card-meta-text"><div class="item-header-name">Lipton Shaftoli</div><div class="item-snippet-desc">0.5L Shaftoli iforli shirin sovuq choy</div></div></div>
-                        <div class="card-price-payload">10,000 so'm</div>
-                    </div>
-                    <div class="premium-choco-card" data-id="sd8" data-name="Red Bull Energy" data-price="22000" onclick="toggleMultiSelect(this)">
-                        <div class="card-left-payload"><div class="card-graphic-icon">⚡</div><div class="card-meta-text"><div class="item-header-name">Red Bull Energy</div><div class="item-snippet-desc">Premium quvvat beruvchi shirin ichimlik</div></div></div>
-                        <div class="card-price-payload">22,000 so'm</div>
-                    </div>
-                    <div class="premium-choco-card" data-id="sd9" data-name="Moxito Qulupnayli" data-price="16000" onclick="toggleMultiSelect(this)">
-                        <div class="card-left-payload"><div class="card-graphic-icon">🍹</div><div class="card-meta-text"><div class="item-header-name">Moxito Qulupnayli</div><div class="item-snippet-desc">Yalpiz, laym, muz va qulupnay shirin sirobi</div></div></div>
-                        <div class="card-price-payload">16,000 so'm</div>
-                    </div>
-                    <div class="premium-choco-card" data-id="sd10" data-name="Sharbat Multimeva" data-price="12000" onclick="toggleMultiSelect(this)">
-                        <div class="card-left-payload"><div class="card-graphic-icon">🧃</div><div class="card-meta-text"><div class="item-header-name">Sharbat Multimeva</div><div class="item-snippet-desc">Tabiiy mevalardan tayyorlangan sharbat</div></div></div>
-                        <div class="card-price-payload">12,000 so'm</div>
-                    </div>
-                    <div class="premium-choco-card" data-id="sd12" data-name="Milkshake Qulupnay" data-price="18000" onclick="toggleMultiSelect(this)">
-                        <div class="card-left-payload"><div class="card-graphic-icon">🍓</div><div class="card-meta-text"><div class="item-header-name">Milkshake Qulupnay</div><div class="item-snippet-desc">Malinali-qulupnayli qaymoqli shirin sutli kokteyl</div></div></div>
-                        <div class="card-price-payload">18,000 so'm</div>
-                    </div>
-                    <div class="premium-choco-card" data-id="sd13" data-name="Limonad Ko'k Okean" data-price="15000" onclick="toggleMultiSelect(this)">
-                        <div class="card-left-payload"><div class="card-graphic-icon">🌐</div><div class="card-meta-text"><div class="item-header-name">Limonad Ko'k Okean</div><div class="item-snippet-desc">Kyurasao sirobi, limon va gazlangan shirin kokteyl</div></div></div>
-                        <div class="card-price-payload">15,000 so'm</div>
-                    </div>
                 </div>
             </div>
 
         </div>
-
-        <div class="system-credits-footer">
-            <span>Buyurtma telefoni: <a href="tel:+998952846471">+998 95 284 64 71</a></span> | Ishlab chiquvchi: <b>asl.fx</b> &copy; 2026
-        </div>
     </div>
 </div>
 
-<div class="secure-modal-overlay" id="verification-modal">
+<!-- SMS MODAL -->
+<div class="secure-modal-overlay" id="sms-modal">
     <div class="sms-center-panel">
-        <h3 style="margin:0; color:var(--deep-blue);">🔐 XAVFSIZLIKNI TASDIQLASH</h3>
-        <p style="font-size:13px; margin: 10px 0; color:#555;">Iltimos, ekrandagi kodni pastga kiriting.</p>
-        <div style="font-size: 16px; font-weight: bold; color:#0077b6;">SMS KOD: <span id="generated-sms-field">0000</span></div>
-        <input type="text" id="sms-user-input" placeholder="XXXX" maxlength="4">
-        <button class="order-dispatch-btn" onclick="submitSmsCodeVerification()">Kodni Tasdiqlash</button>
+        <h3>SMS Tasdiqlash</h3>
+        <p>Telefon raqamiga yuborilgan 4 xonali kodni kiriting:</p>
+        <input type="text" id="sms-code-input" maxlength="4" placeholder="----">
+        <br>
+        <button class="order-dispatch-btn" onclick="confirmOrderSuccess()">Tasdiqlash</button>
     </div>
 </div>
 
-<div class="toast-slide-notification" id="toast-success-banner">
-    <div style="font-size: 26px; color: var(--cyber-blue);">✅</div>
+<!-- TOAST -->
+<div class="toast-slide-notification" id="toast-notify">
+    <div style="font-size:24px;">✨</div>
     <div>
-        <h4 style="margin:0; color:#fff; font-size:15px;">Shirin buyurtma qabul qilindi!</h4>
-        <p style="margin:3px 0 0 0; color:#94a3b8; font-size:12px;">Xaridingiz tez orada tayyor bo'ladi.</p>
+        <div style="font-weight:bold; font-size:14px; color:#fff;" id="toast-title">Bildirishnoma</div>
+        <div style="font-size:12px; color:var(--text-dim);" id="toast-desc">Tafsilotlar...</div>
     </div>
 </div>
 
 <script>
-    let selectedItemsBucket = {};
+    let activeCart = {};
 
-    function toggleMultiSelect(cardElement) {
-        const itemId = cardElement.getAttribute('data-id');
-        const itemName = cardElement.getAttribute('data-name');
-        const itemPrice = parseInt(cardElement.getAttribute('data-price'));
+    // Soat
+    setInterval(() => {
+        const now = new Date();
+        document.getElementById('terminal-clock').innerText = now.toTimeString().split(' ')[0];
+    }, 1000);
 
-        if (cardElement.classList.contains('multi-selected')) {
-            cardElement.classList.remove('multi-selected');
-            delete selectedItemsBucket[itemId];
+    // Ism va Familiyani birlashtirib chekda ko'rsatish
+    function updateFullName() {
+        const name = document.getElementById('client-name').value.trim();
+        const surname = document.getElementById('client-surname').value.trim();
+        const fullNameSpan = document.getElementById('chk-fullname');
+
+        if (name || surname) {
+            fullNameSpan.innerText = `${name} ${surname}`.trim();
+            fullNameSpan.style.color = '#000';
         } else {
-            cardElement.classList.add('multi-selected');
-            selectedItemsBucket[itemId] = { name: itemName, price: itemPrice };
+            fullNameSpan.innerText = 'Kiritilmagan';
+            fullNameSpan.style.color = 'var(--error)';
         }
-
-        renderLiveBasketAndTotal();
     }
 
-    function renderLiveBasketAndTotal() {
-        const name = document.getElementById('client-name').value || "Mijoz";
-        const phone = document.getElementById('client-phone').value.trim();
-        
-        document.getElementById('chk-name').textContent = name;
-        
-        const phoneReceipt = document.getElementById('chk-phone');
-        if (phone.length > 0) {
-            phoneReceipt.textContent = phone;
-            phoneReceipt.style.color = "#000";
-            document.getElementById('client-phone').classList.remove('error-active');
+    document.getElementById('client-name').addEventListener('input', (e) => {
+        e.target.classList.remove('error-active');
+        updateFullName();
+    });
+
+    document.getElementById('client-surname').addEventListener('input', (e) => {
+        e.target.classList.remove('error-active');
+        updateFullName();
+    });
+
+    document.getElementById('client-phone').addEventListener('input', (e) => {
+        const val = e.target.value.trim();
+        const phoneSpan = document.getElementById('chk-phone');
+        e.target.classList.remove('error-active');
+        if(val.length > 0) {
+            phoneSpan.innerText = val;
+            phoneSpan.style.color = 'var(--success)';
         } else {
-            phoneReceipt.textContent = "Kiritilmagan";
-            phoneReceipt.style.color = "var(--error)";
+            phoneSpan.innerText = 'Kiritilmagan';
+            phoneSpan.style.color = 'var(--error)';
         }
+    });
 
-        const basketListContainer = document.getElementById('receipt-basket-list');
-        basketListContainer.innerHTML = "";
+    document.getElementById('client-address').addEventListener('input', (e) => {
+        const val = e.target.value.trim();
+        const addressSpan = document.getElementById('chk-address');
+        e.target.classList.remove('error-active');
+        if(val.length > 0) {
+            addressSpan.innerText = val;
+            addressSpan.style.color = 'var(--deep-blue)';
+        } else {
+            addressSpan.innerText = 'Kiritilmagan';
+            addressSpan.style.color = 'var(--error)';
+        }
+    });
 
+    // Tanlash (Multi-select)
+    function toggleMultiSelect(cardNode) {
+        const id = cardNode.getAttribute('data-id');
+        const name = cardNode.getAttribute('data-name');
+        const price = parseInt(cardNode.getAttribute('data-price'));
+
+        if(activeCart[id]) {
+            delete activeCart[id];
+            cardNode.classList.remove('multi-selected');
+        } else {
+            activeCart[id] = { name, price, count: 1 };
+            cardNode.classList.add('multi-selected');
+        }
+        renderReceipt();
+    }
+
+    // Chekni chiqarish
+    function renderReceipt() {
+        const bucketContainer = document.getElementById('receipt-basket-list');
+        bucketContainer.innerHTML = '';
         let grandTotal = 0;
-        let itemKeys = Object.keys(selectedItemsBucket);
+        let keys = Object.keys(activeCart);
 
-        if (itemKeys.length === 0) {
-            basketListContainer.innerHTML = `<div style="color:#777; text-align:center; font-size:11px; margin-top:20px;">Mahsulot tanlanmadi</div>`;
-        } else {
-            itemKeys.forEach(key => {
-                const item = selectedItemsBucket[key];
-                grandTotal += item.price;
-
-                const row = document.createElement('div');
-                row.className = 'bucket-row';
-                row.innerHTML = `<span>• ${item.name}</span> <span>${item.price.toLocaleString()} so'm</span>`;
-                basketListContainer.appendChild(row);
-            });
-        }
-
-        document.getElementById('chk-grand-total').textContent = "JAMI: " + grandTotal.toLocaleString() + " so'm";
-    }
-
-    document.getElementById('client-name').addEventListener('input', renderLiveBasketAndTotal);
-    document.getElementById('client-phone').addEventListener('input', renderLiveBasketAndTotal);
-
-    let systemSmsCode = 0;
-    function verifyAndSendOrder() {
-        const phoneValue = document.getElementById('client-phone').value.trim();
-        const itemKeys = Object.keys(selectedItemsBucket);
-
-        if (itemKeys.length === 0) {
-            alert("❌ Kamida bitta mahsulot tanlashingiz kerak!");
+        if(keys.length === 0) {
+            bucketContainer.innerHTML = '<div style="color:#777; text-align:center; font-size:11px; margin-top:20px;">Shirinlik tanlanmadi</div>';
+            document.getElementById('chk-grand-total').innerText = "JAMI: 0 so'm";
             return;
         }
 
-        if (phoneValue === "" || phoneValue.length < 5) {
-            document.getElementById('client-phone').classList.add('error-active');
-            alert("❌ Buyurtma berish uchun telefon raqamingiz shart!");
-            document.getElementById('client-phone').focus();
-            return;
-        }
+        keys.forEach(id => {
+            let item = activeCart[id];
+            let rowTotal = item.price * item.count;
+            grandTotal += rowTotal;
 
-        systemSmsCode = Math.floor(1000 + Math.random() * 9000);
-        document.getElementById('generated-sms-field').textContent = systemSmsCode;
-        document.getElementById('sms-user-input').value = "";
-        document.getElementById('verification-modal').style.display = 'flex';
+            let row = document.createElement('div');
+            row.className = 'bucket-row';
+            row.innerHTML = `<span>${item.name} x${item.count}</span><span>${rowTotal.toLocaleString()} so'm</span>`;
+            bucketContainer.appendChild(row);
+        });
+
+        document.getElementById('chk-grand-total').innerText = `JAMI: ${grandTotal.toLocaleString()} so'm`;
     }
 
-    function submitSmsCodeVerification() {
-        const userInput = document.getElementById('sms-user-input').value.trim();
-
-        if (userInput == systemSmsCode) {
-            document.getElementById('verification-modal').style.display = 'none';
-            
-            const toast = document.getElementById('toast-success-banner');
-            toast.classList.add('active-toast');
-            
-            setTimeout(() => {
-                toast.classList.remove('active-toast');
-            }, 4000);
-
-            selectedItemsBucket = {};
-            document.querySelectorAll('.premium-choco-card').forEach(card => card.classList.remove('multi-selected'));
-            renderLiveBasketAndTotal();
-
-        } else {
-            alert("❌ Tasdiqlash kodi xato! Qayta urinib ko'ring.");
-        }
-    }
-
-    function executeClusterFilter(segment, btnElement) {
-        document.querySelectorAll('.mini-filter-node').forEach(btn => btn.classList.remove('active-node'));
-        btnElement.classList.add('active-node');
+    // Filter
+    function executeClusterFilter(segmentKey, btnNode) {
+        document.querySelectorAll('.mini-filter-node').forEach(b => b.classList.remove('active-node'));
+        btnNode.classList.add('active-node');
 
         document.querySelectorAll('.category-cluster').forEach(cluster => {
-            if (cluster.getAttribute('data-segment') === segment) {
+            if(cluster.getAttribute('data-segment') === segmentKey) {
                 cluster.style.display = 'block';
             } else {
                 cluster.style.display = 'none';
@@ -782,20 +838,97 @@
         });
     }
 
+    // Qidiruv
     function searchCatalogItems() {
-        const query = document.getElementById('catalog-searcher').value.toLowerCase();
+        let query = document.getElementById('catalog-searcher').value.toLowerCase();
         document.querySelectorAll('.premium-choco-card').forEach(card => {
-            const name = card.getAttribute('data-name').toLowerCase();
-            card.style.display = name.includes(query) ? 'flex' : 'none';
+            let name = card.getAttribute('data-name').toLowerCase();
+            if(name.includes(query)) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
         });
     }
 
-    setInterval(() => {
-        const d = new Date();
-        let h = d.getHours(), m = d.getMinutes(), s = d.getSeconds();
-        h = h < 10 ? '0' + h : h; m = m < 10 ? '0' + m : m; s = s < 10 ? '0' + s : s;
-        document.getElementById('terminal-clock').textContent = h + ':' + m + ':' + s;
-    }, 1000);
+    // Majburiy maydonlarni va savatni tekshirish
+    function verifyAndSendOrder() {
+        const nameInput = document.getElementById('client-name');
+        const surnameInput = document.getElementById('client-surname');
+        const phoneInput = document.getElementById('client-phone');
+        const addressInput = document.getElementById('client-address');
+
+        let isValid = true;
+
+        if(!nameInput.value.trim()) {
+            nameInput.classList.add('error-active');
+            isValid = false;
+        }
+
+        if(!surnameInput.value.trim()) {
+            surnameInput.classList.add('error-active');
+            isValid = false;
+        }
+
+        if(!phoneInput.value.trim() || phoneInput.value.trim().length < 7) {
+            phoneInput.classList.add('error-active');
+            isValid = false;
+        }
+
+        if(!addressInput.value.trim()) {
+            addressInput.classList.add('error-active');
+            isValid = false;
+        }
+
+        if(!isValid) {
+            showToast("Xatolik!", "Barcha majburiy (*) maydonlarni to'liq to'ldiring!");
+            return;
+        }
+
+        if(Object.keys(activeCart).length === 0) {
+            showToast("Diqqat!", "Savatchaga kamida bitta mahsulot qo'shing!");
+            return;
+        }
+
+        document.getElementById('sms-modal').style.display = 'flex';
+    }
+
+    function confirmOrderSuccess() {
+        let code = document.getElementById('sms-code-input').value;
+        if(code.length < 4) {
+            alert("4 xonali kodni to'liq kiriting!");
+            return;
+        }
+        document.getElementById('sms-modal').style.display = 'none';
+        showToast("Muvaffaqiyatli!", "Buyurtma Yangibozor tumani bo'yicha yetkazib berishga qabul qilindi! 🚀");
+        
+        // Tozalash
+        activeCart = {};
+        renderReceipt();
+        document.querySelectorAll('.premium-choco-card').forEach(c => c.classList.remove('multi-selected'));
+        document.getElementById('client-name').value = '';
+        document.getElementById('client-surname').value = '';
+        document.getElementById('client-phone').value = '';
+        document.getElementById('client-address').value = 'Yangibozor tumani';
+        
+        document.getElementById('chk-fullname').innerText = 'Kiritilmagan';
+        document.getElementById('chk-fullname').style.color = 'var(--error)';
+        document.getElementById('chk-phone').innerText = 'Kiritilmagan';
+        document.getElementById('chk-phone').style.color = 'var(--error)';
+        document.getElementById('chk-address').innerText = 'Yangibozor tumani';
+        document.getElementById('chk-address').style.color = 'var(--deep-blue)';
+        document.getElementById('sms-code-input').value = '';
+    }
+
+    function showToast(title, desc) {
+        const toast = document.getElementById('toast-notify');
+        document.getElementById('toast-title').innerText = title;
+        document.getElementById('toast-desc').innerText = desc;
+        toast.classList.add('active-toast');
+        setTimeout(() => {
+            toast.classList.remove('active-toast');
+        }, 4000);
+    }
 </script>
 
 </body>
